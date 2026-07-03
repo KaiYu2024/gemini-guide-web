@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini 全攻略｜AI 夏令營</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #07111f;
+            --panel: rgba(15, 23, 42, 0.78);
+            --panel-soft: rgba(30, 41, 59, 0.68);
+            --line: rgba(148, 163, 184, 0.24);
+            --text: #f8fafc;
+            --muted: #cbd5e1;
+            --blue: #60a5fa;
+            --cyan: #22d3ee;
+            --green: #86efac;
+            --amber: #fbbf24;
+            --rose: #fb7185;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 12% 12%, rgba(34, 211, 238, 0.2), transparent 28%),
+                radial-gradient(circle at 84% 4%, rgba(251, 113, 133, 0.18), transparent 30%),
+                linear-gradient(145deg, #06101d 0%, #081827 46%, #111827 100%);
+            color: var(--text);
+            font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .app {
+            width: min(1180px, calc(100vw - 32px));
+            min-height: 100vh;
+            margin: 0 auto;
+            padding: 28px 0;
+            display: grid;
+            grid-template-rows: auto auto minmax(0, 1fr) auto;
+            gap: 18px;
+        }
+
+        header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .eyebrow {
+            margin: 0 0 8px;
+            color: var(--cyan);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin: 0;
+            display: inline-block;
+            font-size: 58px;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: 0;
+            background: linear-gradient(90deg, #7dd3fc 0%, #60a5fa 42%, #c084fc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 18px 44px rgba(96, 165, 250, 0.28);
+        }
+
+        .subtitle {
+            margin: 12px 0 0;
+            max-width: 720px;
+            color: var(--muted);
+            font-size: clamp(16px, 2vw, 20px);
+            line-height: 1.7;
+        }
+
+        .badge {
+            flex: 0 0 auto;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            padding: 10px 14px;
+            color: #dbeafe;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 8px;
+            border: 1px solid var(--line);
+            background: rgba(2, 6, 23, 0.4);
+            border-radius: 18px;
+        }
+
+        .tab-button {
+            appearance: none;
+            border: 0;
+            min-width: max-content;
+            border-radius: 12px;
+            padding: 12px 16px;
+            background: transparent;
+            color: var(--muted);
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .tab-button:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.95), rgba(34, 211, 238, 0.72));
+            color: #04111f;
+        }
+
+        main {
+            min-height: 0;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: var(--panel);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+            overflow: hidden;
+        }
+
+        .tab-panel {
+            display: none;
+            height: 100%;
+            min-height: 610px;
+            padding: clamp(22px, 4vw, 42px);
+            overflow-y: auto;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        h2 {
+            margin: 0 0 20px;
+            font-size: clamp(28px, 3vw, 42px);
+            line-height: 1.2;
+        }
+
+        h3 {
+            margin: 0 0 10px;
+            font-size: 22px;
+            line-height: 1.3;
+        }
+
+        p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        ul {
+            margin: 12px 0 0;
+            padding-left: 22px;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        a {
+            color: #93c5fd;
+        }
+
+        .grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .two {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .three {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .feature-deck {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .card {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--panel-soft);
+            padding: 20px;
+        }
+
+        .feature-card {
+            position: relative;
+            min-height: 390px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+            padding: 26px 22px;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.035)),
+                var(--panel-soft);
+        }
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto;
+            height: 6px;
+            background: linear-gradient(90deg, var(--cyan), var(--blue), var(--rose));
+        }
+
+        .feature-card .link-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .callout {
+            border-left: 4px solid var(--cyan);
+            background: rgba(34, 211, 238, 0.08);
+            padding: 16px 18px;
+            border-radius: 8px;
+        }
+
+        .feature-title {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .num {
+            display: inline-grid;
+            place-items: center;
+            width: 58px;
+            height: 58px;
+            border-radius: 999px;
+            background: rgba(96, 165, 250, 0.2);
+            color: #bfdbfe;
+            font-weight: 900;
+            font-size: 28px;
+        }
+
+        .qr-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .qr-card {
+            text-align: center;
+        }
+
+        .qr-card img {
+            width: min(210px, 100%);
+            aspect-ratio: 1;
+            object-fit: contain;
+            padding: 10px;
+            border-radius: 8px;
+            background: white;
+            margin-bottom: 12px;
+        }
+
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .link-pill {
+            display: block;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .example-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .example-button {
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text);
+            padding: 10px 14px;
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .example-button.active {
+            border-color: rgba(134, 239, 172, 0.76);
+            background: rgba(134, 239, 172, 0.18);
+            color: #dcfce7;
+        }
+
+        .example-panel {
+            display: none;
+        }
+
+        .example-panel.active {
+            display: block;
+        }
+
+        .media-frame {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(2, 6, 23, 0.48);
+            overflow: hidden;
+        }
+
+        .media-frame img,
+        .media-frame video,
+        .media-frame iframe {
+            display: block;
+            width: 100%;
+            max-height: 520px;
+            background: #020617;
+        }
+
+        .media-frame img,
+        .media-frame video {
+            object-fit: contain;
+        }
+
+        .media-frame iframe {
+            height: min(65vh, 560px);
+            border: 0;
+        }
+
+        audio {
+            display: block;
+            width: 100%;
+            margin-top: 14px;
+        }
+
+        .compare {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .media-label {
+            padding: 12px 14px;
+            font-weight: 900;
+            color: #e0f2fe;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .prompt {
+            margin-top: 18px;
+            padding: 16px;
+            border-radius: 8px;
+            background: rgba(251, 191, 36, 0.11);
+            color: #fde68a;
+            line-height: 1.8;
+            font-weight: 700;
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        @media (max-width: 860px) {
+            .two,
+            .three,
+            .feature-deck,
+            .qr-grid,
+            .compare {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 40px;
+            }
+
+            header {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .tab-panel {
+                min-height: 560px;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header>
+            <div>
+                <p class="eyebrow">2026 夏令營 AI 課程</p>
+                <h1>GEMINI 全攻略</h1>
+                <p class="subtitle">認識 Google Gemini 的多模態能力，從安裝、圖像、影片、音樂、Canvas、深度研究到引導式學習，一起把 AI 變成創作工具。</p>
+            </div>
+            <div class="badge" id="stepBadge">01 / 07</div>
+        </header>
+
+        <nav aria-label="課程頁籤">
+            <button class="tab-button active" type="button" data-tab="intro">總覽</button>
+            <button class="tab-button" type="button" data-tab="install">安裝</button>
+            <button class="tab-button" type="button" data-tab="features">基本功能</button>
+            <button class="tab-button" type="button" data-tab="advanced">進階功能</button>
+            <button class="tab-button" type="button" data-tab="create">一起創作</button>
+            <button class="tab-button" type="button" data-tab="examples">作品分享</button>
+            <button class="tab-button" type="button" data-tab="qa">Q&A 與結論</button>
+        </nav>
+
+        <main>
+            <section class="tab-panel active" id="intro" aria-labelledby="intro-tab">
+                <h2>什麼是 Gemini？</h2>
+                <div class="grid one">
+                    <article class="card">
+                        <h3>Google 開發的多模態 AI</h3>
+                        <p>Gemini 是一套 Google 所開發的 AI 人工智慧系統。多模態代表它不只能讀懂文字，也能理解圖片、聲音、影片和程式碼。</p>
+                    </article>
+                    <article class="card">
+                        <h3>最大亮點：整合 Google 生態系</h3>
+                        <p>Gemini 可以與 Gmail、Google 文件、雲端硬碟、地圖、YouTube 等工具連結，協助整理郵件、規劃行程或尋找檔案。</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="tab-panel" id="install" aria-labelledby="install-tab">
+                <h2>安裝 Gemini</h2>
+                <div class="qr-grid">
+                    <article class="card qr-card">
+                        <img src="Gemini(iOS).png" alt="Gemini iOS 下載 QR Code">
+                        <h3>iOS</h3>
+                        <p>使用 iPhone 或 iPad 的學員可掃描 QR Code 前往 App Store。</p>
+                    </article>
+                    <article class="card qr-card">
+                        <img src="Gemini-Android.png" alt="Gemini Android 下載 QR Code">
+                        <h3>Android</h3>
+                        <p>使用 Android 手機的學員可掃描 QR Code 前往 Google Play。</p>
+                    </article>
+                    <article class="card qr-card">
+                        <img src="GoogleFlow.png" alt="Google Flow QR Code">
+                        <h3>Google Flow</h3>
+                        <p>AI 影片生成平台。每天有免費點數可試用，再視需求考慮是否訂閱。</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="tab-panel" id="features" aria-labelledby="features-tab">
+                <h2>Gemini 基本功能</h2>
+                <div class="feature-deck">
+                    <article class="card feature-card">
+                        <h3 class="feature-title"><span class="num">🎨</span>建立圖像 Nano banana2</h3>
+                        <p>只需輸入文字描述，AI 就能繪製圖片，讓想像力變成視覺畫面。</p>
+                        <ul>
+                            <li>生成圖像：文字轉圖像</li>
+                            <li>圖片編輯：風格轉換、合成圖片</li>
+                        </ul>
+                    </article>
+                    <article class="card feature-card">
+                        <h3 class="feature-title"><span class="num">🎵</span>創作音樂 Lyria3</h3>
+                        <p>透過文字輸入主題或風格，或上傳圖片、影片，AI 能協助構思歌詞、韻律與音樂靈感。</p>
+                        <ul>
+                            <li>文字生成音樂</li>
+                            <li>為圖片或影片配樂</li>
+                            <li>添加樂器與人聲細節</li>
+                        </ul>
+                    </article>
+                    <article class="card feature-card">
+                        <h3 class="feature-title"><span class="num">🧭</span>引導式學習 Guided Learning</h3>
+                        <p>透過引導和提問，幫助使用者更深層理解知識，而不是只得到答案，特別適合邏輯推理或系統性思考。</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="tab-panel" id="advanced" aria-labelledby="advanced-tab">
+                <h2>Gemini 進階功能</h2>
+                <div class="feature-deck">
+                    <article class="card feature-card">
+                        <h3 class="feature-title"><span class="num">🎬</span>生成影片 Omni</h3>
+                        <p>描述場景後，AI 可生成具電影感的短片，大幅簡化影視創作門檻。</p>
+                        <ul>
+                            <li>文字生成影片</li>
+                            <li>圖片生成影片</li>
+                        </ul>
+                    </article>
+                    <article class="card feature-card">
+                        <h3 class="feature-title"><span class="num">🖥️</span>Canvas</h3>
+                        <p>Canvas 是專屬畫布，可製作互動式網頁、簡報設計，也可以製作小遊戲。</p>
+                        <div class="link-grid">
+                            <a class="link-pill" href="https://gemini.google.com/share/7240247af6ad" target="_blank" rel="noreferrer">考試小卡 1</a>
+                            <a class="link-pill" href="https://gemini.google.com/share/d1d3ac472430" target="_blank" rel="noreferrer">考試小卡 2</a>
+                            <a class="link-pill" href="https://gemini.google.com/share/2842ecd1f214" target="_blank" rel="noreferrer">互動式網頁</a>
+                            <a class="link-pill" href="https://gemini.google.com/share/f0e6229e470c" target="_blank" rel="noreferrer">內容產生器</a>
+                        </div>
+                    </article>
+                    <article class="card feature-card">
+                        <h3 class="feature-title"><span class="num">🔎</span>深度研究 Deep Research</h3>
+                        <p>遇到複雜議題時，AI 可進行深度搜尋與邏輯分析，整理精準且完整的知識重點。若想確認資訊可靠性，可在問題後加上「請附上來源」。</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="tab-panel" id="create" aria-labelledby="create-tab">
+                <h2>一起用 AI 創作吧！</h2>
+                <div class="grid three">
+                    <article class="card">
+                        <h3>圖片創作</h3>
+                        <p>使用模型：Nano banana2。選擇一張相簿照片，撰寫提示詞讓照片產生風格轉換、添加元素或更換背景。</p>
+                        <div class="prompt">參考提示詞：「在照片中孩子的周圍加入可愛元素」</div>
+                        <p style="margin-top: 12px;"><a href="https://gemini.google.com/share/fdaaab5e1ddc" target="_blank" rel="noreferrer">Prompt 完整指南</a></p>
+                    </article>
+                    <article class="card">
+                        <h3>音樂創作</h3>
+                        <p>使用模型：Lyria3。請 Gemini 幫照片或影片配上合適的音樂。</p>
+                        <div class="prompt">參考提示詞：「請為這張照片／這部影片配上適合的音樂。」</div>
+                    </article>
+                    <article class="card">
+                        <h3>影片創作</h3>
+                        <p>使用模型：Omni。讓圖片動起來並生成短片，可提供電腦與帳號讓學員嘗試。</p>
+                        <div class="prompt">參考提示詞：「請將生成的圖片動起來，並生成一段短片」</div>
+                    </article>
+                </div>
+                <div class="callout" style="margin-top: 18px;">
+                    <p>提醒：每日生成式創作都有一定的使用限制量，實作時可先從短提示詞開始，再逐步補上風格、場景、人物、動作與情緒細節。</p>
+                </div>
+            </section>
+
+            <section class="tab-panel" id="examples" aria-labelledby="examples-tab">
+                <h2>實例作品分享</h2>
+                <div class="example-tabs" aria-label="作品類型">
+                    <button class="example-button active" type="button" data-example="image">原圖與 AI 圖片</button>
+                    <button class="example-button" type="button" data-example="video">AI 生成影片</button>
+                    <button class="example-button" type="button" data-example="music">AI 生成音樂</button>
+                    <button class="example-button" type="button" data-example="mix">影片＋音樂合併</button>
+                </div>
+
+                <section class="example-panel active" id="example-image">
+                    <div class="compare">
+                        <div class="media-frame">
+                            <div class="media-label">原圖</div>
+                            <img src="原圖.JPG" alt="原圖作品">
+                        </div>
+                        <div class="media-frame">
+                            <div class="media-label">AI 生成的圖片</div>
+                            <img src="NanoBanana.png" alt="AI 生成的圖片作品">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="example-panel" id="example-video">
+                    <div class="media-frame">
+                        <div class="media-label">AI 生成的影片</div>
+                        <video controls preload="metadata" src="Omni.mp4"></video>
+                    </div>
+                </section>
+
+                <section class="example-panel" id="example-music">
+                    <article class="card">
+                        <h3>AI 生成的音樂</h3>
+                        <p>可直接在頁面中播放，不需要另外開啟雲端連結。</p>
+                        <audio controls preload="metadata" src="小小的蜘蛛人.mp3"></audio>
+                    </article>
+                </section>
+
+                <section class="example-panel" id="example-mix">
+                    <div class="media-frame">
+                        <div class="media-label">AI 影片與 AI 音樂合併剪輯</div>
+                        <iframe src="https://drive.google.com/file/d/1uDl7OWAG7jEehR6UWJ12hO2peoB1Rj1r/preview" allow="autoplay; fullscreen" allowfullscreen title="AI 影片與 AI 音樂合併剪輯"></iframe>
+                    </div>
+                </section>
+            </section>
+
+            <section class="tab-panel" id="qa" aria-labelledby="qa-tab">
+                <h2>Q&A 與結論</h2>
+                <div class="grid one">
+                    <article class="card">
+                        <h3>Q&A（3～5 分鐘）</h3>
+                        <p>保留時間讓學員提問，也可請學員分享剛剛創作時遇到的問題、最喜歡的生成結果，以及還想嘗試的方向。</p>
+                    </article>
+                    <article class="card">
+                        <h3>結論</h3>
+                        <p>AI 科技日新月異，今天所學到的技術與工具也許幾個月後就會被更新，但最重要的是學習新觀念與擁抱新科技的態度，讓 AI 成為未來生活中的得力助手。</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <span>Gemini 全攻略｜AI 夏令營</span>
+            <span>使用鍵盤 ← → 可切換頁籤</span>
+        </footer>
+    </div>
+
+    <script>
+        const tabs = Array.from(document.querySelectorAll(".tab-button"));
+        const panels = Array.from(document.querySelectorAll(".tab-panel"));
+        const badge = document.getElementById("stepBadge");
+        const exampleButtons = Array.from(document.querySelectorAll(".example-button"));
+        const examplePanels = Array.from(document.querySelectorAll(".example-panel"));
+
+        function activateTab(id) {
+            tabs.forEach((tab, index) => {
+                const active = tab.dataset.tab === id;
+                tab.classList.toggle("active", active);
+                if (active) {
+                    badge.textContent = `${String(index + 1).padStart(2, "0")} / ${String(tabs.length).padStart(2, "0")}`;
+                }
+            });
+
+            panels.forEach((panel) => {
+                panel.classList.toggle("active", panel.id === id);
+            });
+        }
+
+        function activateExample(id) {
+            exampleButtons.forEach((button) => {
+                button.classList.toggle("active", button.dataset.example === id);
+            });
+
+            examplePanels.forEach((panel) => {
+                panel.classList.toggle("active", panel.id === `example-${id}`);
+            });
+        }
+
+        tabs.forEach((tab) => {
+            tab.addEventListener("click", () => activateTab(tab.dataset.tab));
+        });
+
+        exampleButtons.forEach((button) => {
+            button.addEventListener("click", () => activateExample(button.dataset.example));
+        });
+
+        window.addEventListener("keydown", (event) => {
+            if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") {
+                return;
+            }
+
+            const currentIndex = tabs.findIndex((tab) => tab.classList.contains("active"));
+            const offset = event.key === "ArrowRight" ? 1 : -1;
+            const nextIndex = Math.min(tabs.length - 1, Math.max(0, currentIndex + offset));
+            activateTab(tabs[nextIndex].dataset.tab);
+        });
+    </script>
+</body>
+</html>

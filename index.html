@@ -370,6 +370,89 @@
             border-bottom: 1px solid var(--line);
         }
 
+        .carousel {
+            position: relative;
+        }
+
+        .carousel-track {
+            position: relative;
+        }
+
+        .media-frame .carousel-slide {
+            display: none;
+        }
+
+        .media-frame .carousel-slide.active {
+            display: block;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(2, 6, 23, 0.62);
+            color: var(--text);
+            font-size: 26px;
+            line-height: 1;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(96, 165, 250, 0.8);
+            color: #04111f;
+        }
+
+        .carousel-arrow.prev {
+            left: 12px;
+        }
+
+        .carousel-arrow.next {
+            right: 12px;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            left: 50%;
+            bottom: 46px;
+            transform: translateX(-50%);
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(2, 6, 23, 0.66);
+            color: #e0f2fe;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            left: 50%;
+            bottom: 16px;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .carousel-dot {
+            width: 11px;
+            height: 11px;
+            padding: 0;
+            border: 0;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.42);
+            cursor: pointer;
+        }
+
+        .carousel-dot.active {
+            background: var(--cyan);
+        }
+
         .prompt {
             margin-top: 18px;
             padding: 16px;
@@ -454,22 +537,22 @@
 
             <section class="tab-panel" id="install" aria-labelledby="install-tab">
                 <h2>安裝 Gemini</h2>
-                <div class="qr-grid">
+                <div class="qr-grid" style="display: flex;justify-content: center">
                     <article class="card qr-card">
                         <img src="static/images/Gemini(iOS).png" alt="Gemini iOS 下載 QR Code">
                         <h3>iOS</h3>
-                        <p>使用 iPhone 或 iPad 的學員可掃描 QR Code 前往 App Store。</p>
+                        <p>使用 iPhone 或 iPad 的班員<br>可掃描 QR Code 前往 App Store。</p>
                     </article>
                     <article class="card qr-card">
                         <img src="static/images/Gemini-Android.png" alt="Gemini Android 下載 QR Code">
                         <h3>Android</h3>
-                        <p>使用 Android 手機的學員可掃描 QR Code 前往 Google Play。</p>
+                        <p>使用 Android 手機的班員<br>可掃描 QR Code 前往 Google Play。</p>
                     </article>
-                    <article class="card qr-card">
+                    <!-- <article class="card qr-card">
                         <img src="static/images/GoogleFlow.png" alt="Google Flow QR Code">
                         <h3>Google Flow</h3>
                         <p>AI 影片生成平台。每天有免費點數可試用，再視需求考慮是否訂閱。</p>
-                    </article>
+                    </article> -->
                 </div>
             </section>
 
@@ -510,6 +593,12 @@
                             <li>文字生成影片</li>
                             <li>圖片生成影片</li>
                         </ul>
+                        <br>
+                        <p style="color:red">※此為訂閱功能：須訂閱Google AI Pro，但先別急著刷卡!!!</p> 
+                        <br><p>可以先到Google Flow平台(AI 影片生成平台)試用，每天有50點可以免費使用。</p>
+                        <div class="link-grid">
+                            <a class="link-pill" href="https://labs.google/fx/tools/flow" target="_blank" rel="noreferrer">Google Flow</a>
+                        </div>
                     </article>
                     <article class="card feature-card">
                         <h3 class="feature-title"><span class="num">🖥️</span>Canvas</h3>
@@ -533,19 +622,19 @@
                 <div class="grid three">
                     <article class="card">
                         <h3>圖片創作</h3>
-                        <p>使用模型：Nano banana2。選擇一張相簿照片，撰寫提示詞讓照片產生風格轉換、添加元素或更換背景。</p>
+                        <p>使用模型：Nano banana2。<br>選擇一張相簿照片，撰寫提示詞讓照片產生風格轉換、添加元素或更換背景。</p>
                         <div class="prompt">參考提示詞：「在照片中孩子的周圍加入可愛元素」</div>
                         <p style="margin-top: 12px;"><a href="https://gemini.google.com/share/fdaaab5e1ddc" target="_blank" rel="noreferrer">Prompt 完整指南</a></p>
                         <p style="margin-top: 12px;"><a href="https://mukiwu.github.io/prompts-vault/" target="_blank" rel="noreferrer">Nano banana 提示詞庫</a></p>
                     </article>
                     <article class="card">
                         <h3>音樂創作</h3>
-                        <p>使用模型：Lyria3。請 Gemini 幫照片或影片配上合適的音樂。</p>
+                        <p>使用模型：Lyria3。<br>請 Gemini 幫照片或影片配上合適的音樂。</p>
                         <div class="prompt">參考提示詞：「請為這張照片／這部影片配上適合的音樂。」</div>
                     </article>
                     <article class="card">
                         <h3>影片創作</h3>
-                        <p>使用模型：Omni。讓圖片動起來並生成短片，可提供電腦與帳號讓學員嘗試。</p>
+                        <p>使用模型：Omni。<br>讓圖片動起來並生成短片，可提供電腦與帳號讓學員嘗試。</p>
                         <div class="prompt">參考提示詞：「請將生成的圖片動起來，並生成一段短片」</div>
                     </article>
                 </div>
@@ -571,7 +660,19 @@
                         </div>
                         <div class="media-frame">
                             <div class="media-label">AI 生成的圖片</div>
-                            <img src="static/images/NanoBanana.png" alt="AI 生成的圖片作品">
+                            <div class="carousel" id="imgCarousel">
+                                <div class="carousel-track">
+                                    <img class="carousel-slide active" src="static/images/NanoBanana.png" alt="AI 加入元素的圖片作品">
+                                    <img class="carousel-slide" src="static/images/NanoBanana2.png" alt="AI 圖片編輯的作品">
+                                </div>
+                                <button class="carousel-arrow prev" type="button" data-dir="-1" aria-label="上一張">‹</button>
+                                <button class="carousel-arrow next" type="button" data-dir="1" aria-label="下一張">›</button>
+                                <div class="carousel-caption">加入元素</div>
+                                <div class="carousel-dots">
+                                    <button class="carousel-dot active" type="button" data-index="0" aria-label="第 1 張"></button>
+                                    <button class="carousel-dot" type="button" data-index="1" aria-label="第 2 張"></button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -586,8 +687,7 @@
                 <section class="example-panel" id="example-music">
                     <article class="card">
                         <h3>AI 生成的音樂</h3>
-                        <p>可直接在頁面中播放，不需要另外開啟雲端連結。</p>
-                        <audio controls preload="metadata" src="static/musics/小小的蜘蛛人.mp3"></audio>
+                        <video width="30%" controls preload="metadata" src="static/videos/小小的蜘蛛人(音樂).mp4"></video>
                     </article>
                 </section>
 
@@ -654,6 +754,49 @@
         exampleButtons.forEach((button) => {
             button.addEventListener("click", () => activateExample(button.dataset.example));
         });
+
+        const imgTabButtons = Array.from(document.querySelectorAll(".img-tab-button"));
+        const imgTabPanels = Array.from(document.querySelectorAll(".img-tab-panel"));
+
+        function activateImgTab(id) {
+            imgTabButtons.forEach((button) => {
+                button.classList.toggle("active", button.dataset.imgtab === id);
+            });
+
+            imgTabPanels.forEach((panel) => {
+                panel.classList.toggle("active", panel.dataset.imgpanel === id);
+            });
+        }
+
+        imgTabButtons.forEach((button) => {
+            button.addEventListener("click", () => activateImgTab(button.dataset.imgtab));
+        });
+
+        const carousel = document.getElementById("imgCarousel");
+        if (carousel) {
+            const slides = Array.from(carousel.querySelectorAll(".carousel-slide"));
+            const dots = Array.from(carousel.querySelectorAll(".carousel-dot"));
+            const caption = carousel.querySelector(".carousel-caption");
+            const captions = ["加入元素", "風格轉換"];
+            let current = 0;
+
+            function showSlide(index) {
+                current = (index + slides.length) % slides.length;
+                slides.forEach((slide, i) => slide.classList.toggle("active", i === current));
+                dots.forEach((dot, i) => dot.classList.toggle("active", i === current));
+                if (caption) {
+                    caption.textContent = captions[current] || "";
+                }
+            }
+
+            carousel.querySelectorAll(".carousel-arrow").forEach((arrow) => {
+                arrow.addEventListener("click", () => showSlide(current + Number(arrow.dataset.dir)));
+            });
+
+            dots.forEach((dot) => {
+                dot.addEventListener("click", () => showSlide(Number(dot.dataset.index)));
+            });
+        }
 
         window.addEventListener("keydown", (event) => {
             if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") {

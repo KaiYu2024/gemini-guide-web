@@ -504,6 +504,9 @@
         <header>
             <div>
                 <p class="eyebrow">2026 夏令營 AI 課程</p>
+                <a href="https://gemini.google.com/app" target="_blank" rel="noreferrer">
+                    <img width="5%" src="static/images/logo.png"/>
+                </a>
                 <h1>GEMINI 全攻略</h1>
                 <p class="subtitle">認識 Google Gemini 的多模態能力，從安裝、圖像、影片、音樂、Canvas、深度研究到引導式學習，一起把 AI 變成創作工具。</p>
             </div>
@@ -511,8 +514,8 @@
         </header>
 
         <nav aria-label="課程頁籤">
-            <button class="tab-button active" type="button" data-tab="intro">總覽</button>
-            <button class="tab-button" type="button" data-tab="install">安裝</button>
+            <button class="tab-button active" type="button" data-tab="install">安裝</button>
+            <button class="tab-button" type="button" data-tab="intro">總覽</button>
             <button class="tab-button" type="button" data-tab="features">基本功能</button>
             <button class="tab-button" type="button" data-tab="advanced">進階功能</button>
             <button class="tab-button" type="button" data-tab="create">一起創作</button>
@@ -521,7 +524,7 @@
         </nav>
 
         <main>
-            <section class="tab-panel active" id="intro" aria-labelledby="intro-tab">
+            <section class="tab-panel" id="intro" aria-labelledby="intro-tab">
                 <h2>什麼是 Gemini？</h2>
                 <div class="grid one">
                     <article class="card">
@@ -532,10 +535,11 @@
                         <h3>最大亮點：整合 Google 生態系</h3>
                         <p>Gemini 可以與 Gmail、Google 文件、雲端硬碟、地圖、YouTube 等工具連結，協助整理郵件、規劃行程或尋找檔案。</p>
                     </article>
+                    <img width="100%" src="static/images/home.png"/>
                 </div>
             </section>
 
-            <section class="tab-panel" id="install" aria-labelledby="install-tab">
+            <section class="tab-panel active" id="install" aria-labelledby="install-tab">
                 <h2>安裝 Gemini</h2>
                 <div class="qr-grid" style="display: flex;justify-content: center">
                     <article class="card qr-card">
@@ -557,30 +561,30 @@
             </section>
 
             <section class="tab-panel" id="features" aria-labelledby="features-tab">
-                <h2>Gemini 基本功能</h2>
-                <div class="feature-deck">
-                    <article class="card feature-card">
-                        <h3 class="feature-title"><span class="num">🎨</span>建立圖像 Nano banana2</h3>
-                        <p>只需輸入文字描述，AI 就能繪製圖片，讓想像力變成視覺畫面。</p>
-                        <ul>
-                            <li>生成圖像：文字轉圖像</li>
-                            <li>圖片編輯：風格轉換、合成圖片</li>
-                        </ul>
-                    </article>
-                    <article class="card feature-card">
-                        <h3 class="feature-title"><span class="num">🎵</span>創作音樂 Lyria3</h3>
-                        <p>透過文字輸入主題或風格，或上傳圖片、影片，AI 能協助構思歌詞、韻律與音樂靈感。</p>
-                        <ul>
-                            <li>文字生成音樂</li>
-                            <li>為圖片或影片配樂</li>
-                            <li>添加樂器與人聲細節</li>
-                        </ul>
-                    </article>
-                    <article class="card feature-card">
-                        <h3 class="feature-title"><span class="num">🧭</span>引導式學習 Guided Learning</h3>
-                        <p>透過引導和提問，幫助使用者更深層理解知識，而不是只得到答案，特別適合邏輯推理或系統性思考。</p>
-                    </article>
-                </div>
+                    <h2>Gemini 基本功能</h2>
+                    <div class="feature-deck">
+                        <article class="card feature-card">
+                            <h3 class="feature-title"><span class="num">🎨</span>建立圖像 Nano banana2</h3>
+                            <p>只需輸入文字描述，AI 就能繪製圖片，讓想像力變成視覺畫面。</p>
+                            <ul>
+                                <li>生成圖像：文字轉圖像</li>
+                                <li>圖片編輯：風格轉換、合成圖片</li>
+                            </ul>
+                        </article>
+                        <article class="card feature-card">
+                            <h3 class="feature-title"><span class="num">🎵</span>創作音樂 Lyria3</h3>
+                            <p>透過文字輸入主題或風格，或上傳圖片、影片，AI 能協助構思歌詞、韻律與音樂靈感。</p>
+                            <ul>
+                                <li>文字生成音樂</li>
+                                <li>為圖片或影片配樂</li>
+                                <li>添加樂器與人聲細節</li>
+                            </ul>
+                        </article>
+                        <article class="card feature-card">
+                            <h3 class="feature-title"><span class="num">🧭</span>引導式學習 Guided Learning</h3>
+                            <p>透過引導和提問，幫助使用者更深層理解知識，而不是只得到答案，特別適合邏輯推理或系統性思考。</p>
+                        </article>
+                    </div>
             </section>
 
             <section class="tab-panel" id="advanced" aria-labelledby="advanced-tab">
@@ -594,7 +598,7 @@
                             <li>圖片生成影片</li>
                         </ul>
                         <br>
-                        <p style="color:red">※此為訂閱功能：須訂閱Google AI Pro，但先別急著刷卡!!!</p> 
+                        <p style="color:red;background-color: wheat;padding:5px">※此為訂閱功能：<br>須訂閱Google AI Pro，但先別急著刷卡!!!</p> 
                         <br><p>可以先到Google Flow平台(AI 影片生成平台)試用，每天有50點可以免費使用。</p>
                         <div class="link-grid">
                             <a class="link-pill" href="https://labs.google/fx/tools/flow" target="_blank" rel="noreferrer">Google Flow</a>
@@ -604,10 +608,10 @@
                         <h3 class="feature-title"><span class="num">🖥️</span>Canvas</h3>
                         <p>Canvas 是專屬畫布，可製作互動式網頁、簡報設計，也可以製作小遊戲。</p>
                         <div class="link-grid">
-                            <a class="link-pill" href="https://gemini.google.com/share/7240247af6ad" target="_blank" rel="noreferrer">考試小卡 1</a>
-                            <a class="link-pill" href="https://gemini.google.com/share/d1d3ac472430" target="_blank" rel="noreferrer">考試小卡 2</a>
+                            <a class="link-pill" href="https://gemini.google.com/share/7240247af6ad" target="_blank" rel="noreferrer">考試小卡</a>
                             <a class="link-pill" href="https://gemini.google.com/share/2842ecd1f214" target="_blank" rel="noreferrer">互動式網頁</a>
-                            <a class="link-pill" href="https://gemini.google.com/share/f0e6229e470c" target="_blank" rel="noreferrer">內容產生器</a>
+                            <!-- <a class="link-pill" href="https://gemini.google.com/share/f0e6229e470c" target="_blank" rel="noreferrer">內容產生器</a> -->
+                            <a class="link-pill" href="https://gemini.google.com/share/33e804a68b91?hl=zh-TW" target="_blank" rel="noreferrer">小遊戲</a>
                         </div>
                     </article>
                     <article class="card feature-card">
@@ -639,7 +643,10 @@
                     </article>
                 </div>
                 <div class="callout" style="margin-top: 18px;">
-                    <p>提醒：每日生成式創作都有一定的使用限制量，實作時可先從短提示詞開始，再逐步補上風格、場景、人物、動作與情緒細節。</p>
+                    <p>提醒：每日生成式創作都有一定的使用限制量，實作時可採積木式疊加需求，逐步補上風格、場景、人物、動作與情緒細節。</p>
+                </div>
+                <div style="padding: 20px;">
+                <img width="90%" src="static/images/Steps.png">
                 </div>
             </section>
 

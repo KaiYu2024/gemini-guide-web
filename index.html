@@ -463,6 +463,53 @@
             font-weight: 700;
         }
 
+        .compare-table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 520px;
+        }
+
+        .compare-table th,
+        .compare-table td {
+            padding: 14px 18px;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid var(--line);
+            line-height: 1.7;
+        }
+
+        .compare-table thead th {
+            font-size: 18px;
+            font-weight: 900;
+            color: #04111f;
+        }
+
+        .compare-table thead th:first-child {
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.95), rgba(34, 211, 238, 0.72));
+        }
+
+        .compare-table thead th:last-child {
+            background: linear-gradient(135deg, rgba(192, 132, 252, 0.92), rgba(251, 113, 133, 0.72));
+        }
+
+        .compare-table tbody td {
+            color: var(--muted);
+        }
+
+        .compare-table tbody td + td {
+            border-left: 1px solid var(--line);
+        }
+
+        .compare-table tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
         footer {
             display: flex;
             justify-content: space-between;
@@ -568,7 +615,7 @@
                         </article>
                         <article class="card feature-card">
                             <h3 class="feature-title"><span class="num">🎵</span>創作音樂 Lyria3</h3>
-                            <p>透過文字輸入主題或風格，或上傳圖片、影片，AI 能協助構思歌詞、韻律與音樂靈感。</p>
+                            <p>透過文字輸入主題或風格，或上傳圖片、影片，AI 能協助構思歌詞、韻律與音樂靈感，<b style="color:rgba(251, 113, 133, 1)">創作出30 秒音樂</b>，還能夠加上歌詞，但若要將音樂與圖片/影片結合，需依靠其他剪輯軟體進行後製。</p>
                             <ul>
                                 <li>文字生成音樂</li>
                                 <li>為圖片或影片配樂</li>
@@ -580,6 +627,71 @@
                             <h3 class="feature-title"><span class="num">🧭</span>引導式學習 Guided Learning</h3>
                             <p>透過引導和提問，幫助使用者更深層理解知識，而不是只得到答案，特別適合邏輯推理或系統性思考。</p>
                         </article>
+                    </div>
+
+                    <h3 style="margin-top: 32px; font-size: 26px;">🎨 建立圖像（Nano banana2）的核心應用</h3>
+                    <div class="grid two" style="margin-top: 16px; align-items: stretch;">
+                        <article class="card">
+                            <h3>殺手級應用：角色一致性</h3>
+                            <p>「跟風」某一個電影、動畫，可以把關鍵元素 P 進去。</p>
+                            <div class="media-frame" style="margin-top: 14px;">
+                                <img src="static/images/核心1.jpg" alt="角色一致性範例：聖誕老人、財神、西裝造型">
+                            </div>
+                        </article>
+                        <article class="card">
+                            <h3>局部編輯</h3>
+                            <p>用最簡單的語言（如：把沙發換成藍色）精確修改畫面局部，無需複雜的遮罩，且光影細節都保持很穩定。</p>
+                            <div class="media-frame" style="margin-top: 14px;">
+                                <img src="static/images/核心6.png" alt="局部編輯範例：將灰色沙發改成藍色">
+                            </div>
+                        </article>
+                        <article class="card">
+                            <h3>組合構圖</h3>
+                            <p>將多個元素無縫融合在一張圖中（如：購買地毯不確定適不適合）。</p>
+                            <div class="compare" style="margin-top: 14px;">
+                                <div class="media-frame">
+                                    <div class="media-label">地墊</div>
+                                    <img src="static/images/核心2.jpg" alt="地墊素材">
+                                </div>
+                                <div class="media-frame">
+                                    <div class="media-label">地板</div>
+                                    <img src="static/images/核心3.jpg" alt="地板原圖">
+                                </div>
+                            </div>
+                            <div class="media-frame" style="margin-top: 14px;">
+                                <div class="media-label">合成結果</div>
+                                <img src="static/images/核心4.jpg" alt="地墊合成到地板的結果">
+                            </div>
+                            <div class="prompt">提示詞：請幫我將左圖地墊密合放入右圖地板上</div>
+                        </article>
+                        <div style="display: flex; flex-direction: column; gap: 18px;">
+                            <article class="card">
+                                <h3>風格轉換</h3>
+                                <p>將一張圖的風格、材質或設計，換成另一種（範例：將真實照片變成黑白線稿）。</p>
+                                <div class="media-frame" style="margin-top: 14px;">
+                                    <img src="static/images/核心5.jpg" alt="風格轉換：真實照片變成黑白線稿">
+                                </div>
+                            </article>
+                            <article class="card" style="flex: 1;">
+                                <h3>製作貼圖</h3>
+                                <p>Prompt 指令範例：「請將這張照片轉換成Q版貼圖，風格為可愛漫畫，粗線條搭配簡單的賽璐璐上色，生成正方形白底圖片，角色需要呈現四種表情：微笑、驚訝、生氣、害羞，整體風格保持一致。」。</p>
+                                <div class="media-frame" style="margin-top: 14px;">
+                                    <div class="carousel" id="stickerCarousel">
+                                        <div class="carousel-track">
+                                            <img class="carousel-slide active" src="static/images/核心7.jpg" alt="製作貼圖範例一：柯基 Q 版貼圖">
+                                            <img class="carousel-slide" src="static/images/核心8.png" alt="製作貼圖範例二：濟公 Q 版貼圖">
+                                        </div>
+                                        <button class="carousel-arrow prev" type="button" data-dir="-1" aria-label="上一張">‹</button>
+                                        <button class="carousel-arrow next" type="button" data-dir="1" aria-label="下一張">›</button>
+                                        <!-- <div class="carousel-caption">範例一</div> -->
+                                        <div class="carousel-dots">
+                                            <button class="carousel-dot active" type="button" data-index="0" aria-label="第 1 張"></button>
+                                            <button class="carousel-dot" type="button" data-index="1" aria-label="第 2 張"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
                     </div>
             </section>
 
@@ -593,8 +705,7 @@
                             <li>文字生成影片</li>
                             <li>圖片生成影片</li>
                         </ul>
-                        <br>
-                        <p style="color:red;background-color: wheat;padding:5px">※此為訂閱功能：<br>須訂閱Google AI Pro，但先別急著刷卡!!!</p> 
+                        <p class="prompt" style="color:rgba(251, 113, 133, 1) ;padding: 8px;">※此為訂閱功能：<br>須訂閱Google AI Pro，但先別急著刷卡!</p> 
                         <br><p>可以先到Google Flow平台(AI 影片生成平台)試用，每天有50點可以免費使用。</p>
                         <div class="link-grid">
                             <a class="link-pill" href="https://labs.google/fx/tools/flow" target="_blank" rel="noreferrer">Google Flow</a>
@@ -609,11 +720,34 @@
                             <!-- <a class="link-pill" href="https://gemini.google.com/share/f0e6229e470c" target="_blank" rel="noreferrer">內容產生器</a> -->
                             <a class="link-pill" href="https://gemini.google.com/share/33e804a68b91?hl=zh-TW" target="_blank" rel="noreferrer">小遊戲</a>
                         </div>
+                        <div class="prompt">提示詞參考：請幫我製作一份介紹 AI 生成工具的簡報，生成 8 頁精華版，謝謝。</div>
                     </article>
                     <article class="card feature-card">
                         <h3 class="feature-title"><span class="num">🔎</span>深度研究 Deep Research</h3>
                         <p>遇到複雜議題時，AI 可進行深度搜尋與邏輯分析，整理精準且完整的知識重點。若想確認資訊可靠性，可在問題後加上「請附上來源」。</p>
                     </article>
+                </div>
+
+                <h3 style="margin-top: 32px; font-size: 26px;">🖥️ Gemini Canvas × NotebookLM 對照</h3>
+                <div class="compare-table-wrap" style="margin-top: 16px;">
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th>Gemini Canvas</th>
+                                <th>NotebookLM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span style="color:rgba(251, 113, 133, 1)">動態數據</span>，透過 Deep Research，能即時讀取你五分鐘前剛收到的 Gmail 或剛更新的雲端文件。</td>
+                                <td><span style="color:rgba(251, 113, 133, 1)">靜態知識</span>，必須基於你手動上傳的固定素材集（如多份 PDF、Word、YouTube 影片等）。</td>
+                            </tr>
+                            <tr>
+                                <td>可至 Google 簡報進行編輯。</td>
+                                <td>無法編輯。</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
 
@@ -622,7 +756,7 @@
                 <div class="grid three">
                     <article class="card">
                         <h3>圖片創作</h3>
-                        <p>使用模型：Nano banana2。<br>ㄕ選擇一張相簿照片，撰寫提示詞讓照片產生風格轉換、添加元素或更換背景。</p>
+                        <p>使用模型：Nano banana2。<br>選擇一張相簿照片，撰寫提示詞讓照片產生風格轉換、添加元素或更換背景。</p>
                         <div class="prompt">參考提示詞：「在照片中孩子的周圍加入可愛元素」</div>
                         <p style="margin-top: 12px;"><a href="https://gemini.google.com/share/fdaaab5e1ddc" target="_blank" rel="noreferrer">Prompt 完整指南</a></p>
                         <p style="margin-top: 12px;"><a href="https://mukiwu.github.io/prompts-vault/" target="_blank" rel="noreferrer">Nano banana 提示詞庫</a></p>
@@ -635,7 +769,7 @@
                     <article class="card">
                         <h3>影片創作</h3>
                         <p>使用模型：Omni。<br>讓圖片動起來並生成短片，可提供電腦與帳號讓學員嘗試。</p>
-                        <div class="prompt">參考提示詞：「請將生成的圖片動起來，並生成一段短片」</div>
+                        <div class="prompt">參考提示詞：<br>「請將生成的圖片以自然流暢的方式畫起來，並生成一段影片，<span style="color:rgba(251, 113, 133, 1)">請注意不可修改任何元素 !</span>」</div>
                     </article>
                 </div>
                 <div class="callout" style="margin-top: 18px;">
@@ -824,6 +958,32 @@
 
             dots.forEach((dot) => {
                 dot.addEventListener("click", () => showSlide(Number(dot.dataset.index)));
+            });
+        }
+
+        const stickerCarousel = document.getElementById("stickerCarousel");
+        if (stickerCarousel) {
+            const slides = Array.from(stickerCarousel.querySelectorAll(".carousel-slide"));
+            const dots = Array.from(stickerCarousel.querySelectorAll(".carousel-dot"));
+            const caption = stickerCarousel.querySelector(".carousel-caption");
+            const captions = ["範例一", "範例二"];
+            let current = 0;
+
+            function showStickerSlide(index) {
+                current = (index + slides.length) % slides.length;
+                slides.forEach((slide, i) => slide.classList.toggle("active", i === current));
+                dots.forEach((dot, i) => dot.classList.toggle("active", i === current));
+                if (caption) {
+                    caption.textContent = captions[current] || "";
+                }
+            }
+
+            stickerCarousel.querySelectorAll(".carousel-arrow").forEach((arrow) => {
+                arrow.addEventListener("click", () => showStickerSlide(current + Number(arrow.dataset.dir)));
+            });
+
+            dots.forEach((dot) => {
+                dot.addEventListener("click", () => showStickerSlide(Number(dot.dataset.index)));
             });
         }
 
